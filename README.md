@@ -7,6 +7,12 @@ This repository depends on having a KMAPS application.
 * Docker - [Here is the link for macOS](https://docs.docker.com/docker-for-mac/install/)
 * clone this repo inside `kmaps-docker` folder
 
+0. Build all the DockerImages
+
+```bash
+$ docker build . -f ruby.dockerfile -t uva-import-rails-base 
+```
+
 1. Build all the DockerImages
 
 ```bash
