@@ -13,6 +13,7 @@ RUN apk add --update \
   postgresql-dev \
   tzdata \
   nodejs \
+  icu-dev \
   && apk add git && rm -rf /var/cache/apk/*
 
 RUN bundle config --global path "$GEM_HOME" \
