@@ -1,0 +1,72 @@
+version: '3.1'
+
+services:
+#Places ApRuby ape
+  places:
+    image: uva-import-places
+    build:
+      context: .
+      dockerfile: places.dockerfile
+    depends_on:
+      - postgres
+      - geoserver
+      - solr
+    ports:
+      - '3000:3000' #Expose port 3000 of puma
+    volumes:
+      - ./volumes/places-logs:/usr/src/app/log
+    stdin_open: true
+    tty: true
+    networks:
+      - uvanet
+
+#postgres:
+  postgres:
+    image: uva-import-places-postgres
+    build:
+        context: .
+        dockerfile: postgres.dockerfile
+    #ports:
+    #- "5432:5432"
+    volumes:
+      - ./volumes/pgdata:/var/lib/postgresql/data
+    networks:
+      - uvanet
+
+#  geoserver:
+  geoserver:
+    image: uva-import-places-geoserver
+    build:
+        context: .
+        dockerfile: geoserver.dockerfile
+    depends_on:
+      - postgres
+    ports:
+    - "8080:8080"
+    volumes:
+      - ./volumes/geoserverdata:/geoserver_data
+    networks:
+      - uvanet
+
+#  solr:
+  solr:
+    image: uva-import-places-solr
+    build:
+      context: .
+      dockerfile: solr.dockerfile
+    depends_on:
+      - postgres
+    ports:
+    - "8983:8983"
+    volumes:
+      - ./volumes/solrdata:/opt/solr/server/solr/mycores
+    networks:
+      - uvanet
+# volumes for some of the servers to maitina consistency through drop and run of containers
+#volumes:
+  ##rails-bundler:
+  #pgdata:
+  #geoserverdata:
+  #solrdata:
+networks:
+  uvanet:
