@@ -1,4 +1,4 @@
-# Docker infrastructure to work importations locally
+# Docker infrastructure to do importations locally
 
 This repository depends on having a KMAPS application.
 
@@ -19,19 +19,19 @@ $ docker-compose build
 $ ./init_geoserver_copy_data.sh
 ```
 
-3. Run only postgres, to Initialize the DB
+3. Run only the  `postgres` container, to Initialize the DB
 
 ```bash
 $ docker-compose up postgres
 ```
 
-4. when is completed, stop postgres
+4. when is completed, stop `postgres` container
 
 ```bash
 $ docker-compose stop postgres
 ```
 
-That creates all the infrastructure. Now every time we want ot restart the
+That creates all the infrastructure. Now every time we want to restart the
 full system:
 
 1. Start all the system 
@@ -40,21 +40,22 @@ full system:
 ```bash
 $ docker-compose up 
 ```
-2. Everytime we restart 
+2. Every time we restart 
 
 ```bash
 $ ./init_solr_core_creation.sh
 ```
 
-Everytime we want to import put files inside `csv_files/` directory
+Every time we want to import put files inside `csv_files/` directory
 
 ```bash
 $ ./import_places.sh
 ```
 
-Everytime we restart the importation we want to clear the Database
-the database backup is located in: files/postgres/places.backup 
+Every time we restart the importation, we want to clear the Database.
+The database backup should be inside the following path:  `./files/postgres/places.backup`
 
 ```bash
 ./prepare_places_dev_db_for_import.sh
 ```
+
