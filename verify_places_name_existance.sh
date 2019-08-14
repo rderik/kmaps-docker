@@ -36,6 +36,7 @@ then
   exit 1
 else
   docker exec -it kmaps-docker_places_1 sh -c "mkdir -p csvs"
+  docker exec -it kmaps-docker_places_1 sh -c "mkdir -p tmp"
   docker cp "./csv_files/$USOURCE" kmaps-docker_places_1:/usr/src/app/csvs/
   docker exec -it kmaps-docker_places_1 sh -c "bin/rails -D feature_name_match:match"
   docker exec -it kmaps-docker_places_1 sh -c "bin/rake db:feature_name_match:match SOURCE=./csvs/${SOURCE} --trace"

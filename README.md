@@ -10,7 +10,7 @@ This repository depends on having a KMAPS application.
 0. Build all the DockerImages
 
 ```bash
-$ docker build . -f ruby.dockerfile -t uva-import-rails-base 
+$ docker build . -f rails-base.dockerfile -t uva-import-rails-base
 ```
 
 1. Build all the DockerImages
@@ -65,3 +65,25 @@ The database backup should be inside the following path:  `./files/postgres/plac
 ./prepare_places_dev_db_for_import.sh
 ```
 
+
+## If you wish to pull the code to its' latest version use the following command
+
+Inside your the `kmaps-docker` directory, run:
+
+```bash
+git pull origin master
+```
+
+# If you want to rebuild the places image with the latest master commit
+
+Build it using `--no-cache`. use the following command:
+
+```bash
+docker build . --no-cache -f places.dockerfile -t uva-import-places
+```
+
+# To run the name match task run the script
+
+```bash
+./verify_places_name_existance.sh
+```

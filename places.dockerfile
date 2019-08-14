@@ -7,7 +7,6 @@ COPY ./files/rails/places/config/flare.yml ./config/
 COPY ./files/rails/places/config/database.yml ./config/
 COPY ./files/rails/places/config/development.rb ./config/environments/
 COPY ./files/rails/places/config/places_engine.yml ./config/
-COPY ./files/rails/places/Gemfile ./
 RUN pwd
 WORKDIR $APP
 RUN bundle install --gemfile=./Gemfile

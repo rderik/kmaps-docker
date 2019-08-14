@@ -3,7 +3,7 @@ version: '3.1'
 services:
 #Places ApRuby ape
   places:
-    image: uva-import-places
+    image: uva-import-places:latest
     build:
       context: .
       dockerfile: places.dockerfile
