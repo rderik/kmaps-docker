@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
-#!/bin/bash
 
 USAGE="Usage:\n${0##*/} --source=csv_file_name --task=task_code [--from=row_num] [--to=row_num] [--log_level=0..5]"
 arguments=""
@@ -53,7 +52,7 @@ then
 fi
 if [ -z "${SOURCE}" ] | [ -z "${TASK}" ]
 then
-  echo "Source file and task name is required"
+  echo "Source file and task name are required"
   echo "${USAGE}"
   exit 1
 else
